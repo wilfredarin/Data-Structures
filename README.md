@@ -1,4 +1,4 @@
-# Data_structures
+# Data structures
 Data structures with python3 
 1. Linked_list
 2. Stack
