@@ -1,2 +1,7 @@
 # Data_structures
-Data structures like Linked_list,Stack,Queue,Tree
+Data structures with python3 
+1. Linked_list
+2. Stack
+3. Queue
+4. Tree
+ 
