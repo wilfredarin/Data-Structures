@@ -35,4 +35,4 @@ A tree node :
 	 root.left.left = Node("money")
 	 root.left.right = Node("love")
 	 root.right.left = Node("poor")
-	 root.right.right = Node("awe!")
+	 root.right.right = Node("sad!")
