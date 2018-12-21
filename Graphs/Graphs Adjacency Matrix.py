@@ -43,57 +43,73 @@ cons:
 
 
 #A simple representation of graph using Adjacency Matrix
+#Graph class
+#	numvertex,adjMatrix,vertives,verticeslist
+#   set_vertex,set_edge:adjMatrix,get_vertex,get_edge
 class Graph:
     def __init__(self,numvertex):
         self.adjMatrix = [[-1]*numvertex for x in range(numvertex)]
+        #creates a 2d array ([-1 -1 -1],[-1 -1 -1],[-1 -1 -1 ])
         self.numvertex = numvertex
         self.vertices = {}
-        self.verticeslist =[0]*numvertex
+        #empty dictionary 
+        self.verticeslist =[0]*numvertex #list of vertices in the graph
+#set_vertex method  has 2 arg : index and Name of the vertex:
 
     def set_vertex(self,vtx,id):
         if 0<=vtx<=self.numvertex:
-            self.vertices[id] = vtx
-            self.verticeslist[vtx] = id
+        	#id is the name of the vertex: vtx is the index of the vertex
+            self.vertices[id] = vtx 
+            self.verticeslist[vtx] = id #at vtx pos place the vertex name in the list
+
+#edge: src dest cost(weight)
+#it sets frm=value at vertices[in from Name what ever stored] --- these re indices of the name(number)
+#it sets to = value at vertices[in to Name what ever stored]
+#in adjMatrix set it 
 
     def set_edge(self,frm,to,cost=0):
         frm = self.vertices[frm]
         to = self.vertices[to]
-        self.adjMatrix[frm][to] = cost
+        self.adjMatrix[frm][to]=cost
         #for directed graph do not add this
         self.adjMatrix[to][frm] = cost
 
     def get_vertex(self):
         return self.verticeslist
-
+#edge has src dest  cost (src n dst from verticeslist..... ) and cost from adjMatrix
     def get_edges(self):
         edges=[]
         for i in range (self.numvertex):
             for j in range (self.numvertex):
                 if (self.adjMatrix[i][j]!=-1):
                     edges.append((self.verticeslist[i],self.verticeslist[j],self.adjMatrix[i][j]))
+                    #src dest weight
         return edges
         
     def get_matrix(self):
         return self.adjMatrix
 
-G =Graph(6)
-G.set_vertex(0,'a')
-G.set_vertex(1,'b')
-G.set_vertex(2,'c')
-G.set_vertex(3,'d')
-G.set_vertex(4,'e')
-G.set_vertex(5,'f')
-G.set_edge('a','e',10)
-G.set_edge('a','c',20)
-G.set_edge('c','b',30)
-G.set_edge('b','e',40)
-G.set_edge('e','d',50)
-G.set_edge('f','e',60)
+
+
+print("Welcome to graphs!!")
+n=int(input("please enter the number of vertices you want in your graph:"))
+G =Graph(n)
+for i in range(n):
+	a=(input("please enter ->"+str(i+1)+ " vertex name Name:"))
+	G.set_vertex(i,a)
+print("Now set the Edges: input source-->Destination--->cost:")
+for i in range(n-1):
+	#n vertices has n-1 edge
+	a,b,c=(input("source Destination Cost :").split(" "))
+	G.set_edge(a,b,int(c))
+
+
 print("Vertices of Graph")
 print(G.get_vertex())
 print("Edges of Graph")
 print(G.get_edges())
 print("Adjacency Matrix of Graph")
 print(G.get_matrix())
-
+print("test run")
+print(G.vertices)
 #This code is contributed by Sameer Ranjan
