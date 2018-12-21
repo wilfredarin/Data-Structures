@@ -4,4 +4,4 @@ Data structures with python3
 2. Stack
 3. Queue
 4. Tree
- 
+5. Graphs 
