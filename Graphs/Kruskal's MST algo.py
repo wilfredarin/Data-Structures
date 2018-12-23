@@ -76,7 +76,7 @@ Weight   Src    Dest
 
 from collections import defaultdict 
 
-#Class to represent a graph 
+#Class to represent a graph is 
 class Graph: 
 
 	def __init__(self,vertices): 
